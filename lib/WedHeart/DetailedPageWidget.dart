@@ -4,6 +4,25 @@ import 'package:flutter_application_1/main.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Detailedpagewidget extends StatelessWidget {
+  Widget tabbarContainer({required String name, required String image}) {
+    return Container(
+      height: 100.h,
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.asset(
+              height: 75.h,
+              image,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Text(name)
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +84,10 @@ class Detailedpagewidget extends StatelessWidget {
             ),
           ),
           Container(
-            height: 80,
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: BorderRadius.circular(20),
+            ),
             child: ListTile(
               leading: CircleAvatar(
                 radius: 30,
@@ -93,8 +115,8 @@ class Detailedpagewidget extends StatelessWidget {
                       bottom: TabBar(tabs: [
                         Tab(
                             child: Text(
-                          "new style",
-                          style: TextStyle(fontSize: 13.sp),
+                          "Decoration",
+                          style: TextStyle(fontSize: 11.sp),
                         )),
                         Tab(
                             child: Text(
@@ -113,7 +135,31 @@ class Detailedpagewidget extends StatelessWidget {
                       ]),
                     ),
                     body: TabBarView(children: [
-                      Icon(Icons.abc_outlined),
+                      ListView.builder(
+                        itemCount: 10,
+                        itemBuilder: (context, index) {
+                          return Container(
+                              child: Column(
+                            children: [
+                              ListTile(
+                                title: Text('Engagment Decoration'),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  tabbarContainer(
+                                      name: "Sri kalyan", image: hall),
+                                  tabbarContainer(
+                                      name: "sea view", image: hall2),
+                                  tabbarContainer(
+                                      name: "Royal palace", image: dec)
+                                ],
+                              ),
+                            ],
+                          ));
+                        },
+                      ),
                       Text("hello"),
                       Text("hai"),
                       Text("ge")
