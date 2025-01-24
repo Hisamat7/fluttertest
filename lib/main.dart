@@ -3,6 +3,9 @@ import 'package:flutter_application_1/Exercise/RunningUi.dart';
 import 'package:flutter_application_1/HotelUi/HotelFirst.dart';
 import 'package:flutter_application_1/Named_routing/Running_Home.dart';
 import 'package:flutter_application_1/ScaffoldWidget.dart';
+import 'package:flutter_application_1/Sharedprefernce/SharedPerfernceTheme.dart';
+import 'package:flutter_application_1/Sharedprefernce/SimpleSharedprefernceEx.dart';
+
 import 'package:flutter_application_1/StateFulWidget.dart/PasswordEyeState.dart';
 import 'package:flutter_application_1/StateFulWidget.dart/StatefulWidget.dart';
 import 'package:flutter_application_1/WedHeart/DetailShowMainWidget.dart';
@@ -41,17 +44,35 @@ import './app.dart';
 //   runApp(RunningHome());
 // }
 
+// void main() {
+//   runApp(ScreenUtilInit(
+//     designSize: Size(384, 805),
+//     minTextAdapt: true,
+//     builder: (context, child) {
+//       return MaterialApp(
+//           debugShowCheckedModeBanner: false,
+//           theme: ThemeData(
+//             fontFamily: 'Poppins',
+//           ),
+//           home: Sharedprefernce());
+//     },
+//   ));
+// }
+
+
 void main() {
   runApp(ScreenUtilInit(
     designSize: Size(384, 805),
     minTextAdapt: true,
     builder: (context, child) {
       return MaterialApp(
+        
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            useMaterial3: true,
             fontFamily: 'Poppins',
           ),
-          home: Detailedpagewidget());
+          home: SimplesharedprefernceEx());
     },
   ));
 }
