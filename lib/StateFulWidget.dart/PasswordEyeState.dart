@@ -30,6 +30,7 @@ class PasswordeyestateState extends State<Passwordeyestate> {
                           color: const Color.fromARGB(255, 192, 255, 251)))),
             ),
           ),
+          
           Container(
             padding: EdgeInsets.only(left: 20, right: 20, bottom: 15),
             child: TextFormField(
