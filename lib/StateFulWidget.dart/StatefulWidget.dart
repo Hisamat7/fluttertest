@@ -15,13 +15,16 @@ class StatefulwidgetState extends State<Statefulwidget> {
         children: [
           Center(
             child: Text("Count: $count"),
-
           ),
-          ElevatedButton(onPressed: (){
-            setState(() {
-              count++;
-            });
-          }, child: Text("Click Me")),
+          ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  count++;
+                });
+              },
+              child: Text(
+                "Click Me",
+              )),
         ],
       ),
     );

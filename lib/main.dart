@@ -18,13 +18,16 @@ import 'package:flutter_application_1/WedHeart/VenueHome.dart';
 import 'package:flutter_application_1/anonymous_routing/first.dart';
 import 'package:flutter_application_1/eg.dart';
 import 'package:flutter_application_1/example.dart';
+import 'package:flutter_application_1/hive_db/model/todo_model.dart';
 import 'package:flutter_application_1/hive_db/screens/TodoHomeHive.dart';
+import 'package:flutter_application_1/hive_db/service/TodoService.dart';
 import 'package:flutter_application_1/intermediate_flutter/Module1/Runfile.dart';
 import 'package:flutter_application_1/study.dart';
 import 'package:flutter_application_1/widget/ScafoldEx.dart';
 import 'package:flutter_application_1/widget/buttonWidget/WidgetRefactoring/WidgetRefactoring.dart';
 import 'package:flutter_application_1/widget/h&mEx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import './app.dart';
 
@@ -60,7 +63,27 @@ import './app.dart';
 //   ));
 // }
 
-void main() {
+// void main() {
+//   runApp(ScreenUtilInit(
+//     designSize: Size(384, 805),
+//     minTextAdapt: true,
+//     builder: (context, child) {
+//       return MaterialApp(
+//           debugShowCheckedModeBanner: false,
+//           theme: ThemeData(
+//             useMaterial3: true,
+//             fontFamily: 'Poppins',
+//           ),
+//           home:Todohomehive() );
+//     },
+//   ));
+// }
+
+
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(TodoAdapter());
+  await Todoservice().openBox();
   runApp(ScreenUtilInit(
     designSize: Size(384, 805),
     minTextAdapt: true,
@@ -71,7 +94,7 @@ void main() {
             useMaterial3: true,
             fontFamily: 'Poppins',
           ),
-          home:Todohomehive() );
+          home: Todohomehive());
     },
   ));
 }
