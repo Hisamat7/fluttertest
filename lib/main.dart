@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Exercise/RunningUi.dart';
+import 'package:flutter_application_1/Hive_Exx/screen/TodosHome.dart';
 import 'package:flutter_application_1/HotelUi/HotelFirst.dart';
 import 'package:flutter_application_1/Named_routing/Running_Home.dart';
 import 'package:flutter_application_1/ScaffoldWidget.dart';
@@ -79,11 +80,26 @@ import './app.dart';
 //   ));
 // }
 
+// void main() async {
+//   await Hive.initFlutter();
+//   Hive.registerAdapter(TodoAdapter());
+//   await Todoservice().openBox();
+//   runApp(ScreenUtilInit(
+//     designSize: Size(384, 805),
+//     minTextAdapt: true,
+//     builder: (context, child) {
+//       return MaterialApp(
+//           debugShowCheckedModeBanner: false,
+//           theme: ThemeData(
+//             useMaterial3: true,
+//             fontFamily: 'Poppins',
+//           ),
+//           home: Todohomehive());
+//     },
+//   ));
+// }
 
-void main() async {
-  await Hive.initFlutter();
-  Hive.registerAdapter(TodoAdapter());
-  await Todoservice().openBox();
+void main(){
   runApp(ScreenUtilInit(
     designSize: Size(384, 805),
     minTextAdapt: true,
@@ -91,10 +107,10 @@ void main() async {
       return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            useMaterial3: true,
+            primarySwatch: Colors.yellow,
             fontFamily: 'Poppins',
           ),
-          home: Todohomehive());
+          home: TodosHome());
     },
   ));
 }
