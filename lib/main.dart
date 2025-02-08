@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Exercise/RunningUi.dart';
+import 'package:flutter_application_1/Hive_Exx/model/TodosModel.dart';
 import 'package:flutter_application_1/Hive_Exx/screen/TodosHome.dart';
+import 'package:flutter_application_1/Hive_Exx/service/TodoService.dart';
 import 'package:flutter_application_1/HotelUi/HotelFirst.dart';
 import 'package:flutter_application_1/Named_routing/Running_Home.dart';
 import 'package:flutter_application_1/ScaffoldWidget.dart';
@@ -99,7 +101,10 @@ import './app.dart';
 //   ));
 // }
 
-void main(){
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(TodoModelAdapter());
+  await TodoService().openbox();
   runApp(ScreenUtilInit(
     designSize: Size(384, 805),
     minTextAdapt: true,
