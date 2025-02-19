@@ -1,5 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Exercise/RunningUi.dart';
+import 'package:flutter_application_1/FireBase/todoHomeFb/ScreenFb/HomePageFireBase.dart';
+import 'package:flutter_application_1/FireBase/todoHomeFb/ScreenFb/LoginScreenFirebase.dart';
+import 'package:flutter_application_1/FireBase/todoHomeFb/ScreenFb/RegisterScreenFirebase.dart';
+import 'package:flutter_application_1/FireBase/todoHomeFb/Firebase_auth.dart';
 import 'package:flutter_application_1/Hive_Exx/model/TodosModel.dart';
 import 'package:flutter_application_1/Hive_Exx/screen/TodosHome.dart';
 import 'package:flutter_application_1/Hive_Exx/service/TodoService.dart';
@@ -21,6 +26,7 @@ import 'package:flutter_application_1/WedHeart/VenueHome.dart';
 import 'package:flutter_application_1/anonymous_routing/first.dart';
 import 'package:flutter_application_1/eg.dart';
 import 'package:flutter_application_1/example.dart';
+import 'package:flutter_application_1/firebase_options.dart';
 import 'package:flutter_application_1/hive_db/model/todo_model.dart';
 import 'package:flutter_application_1/hive_db/screens/TodoHomeHive.dart';
 import 'package:flutter_application_1/hive_db/service/TodoService.dart';
@@ -101,10 +107,31 @@ import './app.dart';
 //   ));
 // }
 
+// void main() async {
+
+//   await Hive.initFlutter();
+//   Hive.registerAdapter(TodoModelAdapter());
+//   await TodoService().openbox();
+//   runApp(ScreenUtilInit(
+//     designSize: Size(384, 805),
+//     minTextAdapt: true,
+//     builder: (context, child) {
+//       return MaterialApp(
+//           debugShowCheckedModeBanner: false,
+//           theme: ThemeData(
+//             primarySwatch: Colors.yellow,
+//             fontFamily: 'Poppins',
+//           ),
+//           home: TodosHome());
+//     },
+//   ));
+// }
+
 void main() async {
-  await Hive.initFlutter();
-  Hive.registerAdapter(TodoModelAdapter());
-  await TodoService().openbox();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(ScreenUtilInit(
     designSize: Size(384, 805),
     minTextAdapt: true,
@@ -112,10 +139,10 @@ void main() async {
       return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            primarySwatch: Colors.yellow,
+            
             fontFamily: 'Poppins',
           ),
-          home: TodosHome());
+          home: LoginScreenFirebase ());
     },
   ));
 }
